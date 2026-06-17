@@ -6,13 +6,13 @@ image-version: 44
 modules:
   - type: files
     files:
-      - source: config/sysusers.d
+      - source: sysusers.d
         destination: /usr/lib/sysusers.d
-      - source: config/tmpfiles.d
+      - source: tmpfiles.d
         destination: /usr/lib/tmpfiles.d
-      - source: config/polkit-1
+      - source: polkit-1
         destination: /usr/share/polkit-1
-      - source: files/pia-backup.tar.gz
+      - source: pia-backup.tar.gz
         destination: /tmp/pia-backup.tar.gz
 
   - type: rpm-ostree
