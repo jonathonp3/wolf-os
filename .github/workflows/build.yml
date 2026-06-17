@@ -1,0 +1,38 @@
+name: bluebuild
+on:
+  schedule:
+    - cron: "00 06 * * *"   # Build at 06:00 UTC every day
+  push:
+    paths-ignore:
+      - "**.md"
+  workflow_dispatch:        # Allows you to click a button to start a build manually
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  bluebuild:
+    name: Build Custom Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        recipe:
+          # This must match your file in recipes/recipe.yml
+          - recipe.yml
+    steps:
+      - name: Build Custom Image
+        uses: blue-build/github-action@v1
+        with:
+          # Pointing to the recipes folder
+          recipe: recipes/${{ matrix.recipe }}
+          cosign_private_key: ${{ secrets.SIGNING_SECRET }}
+          cosign_password: ${{ secrets.COSIGN_PASSWORD }}
+          registry_token: ${{ github.token }}
+          maximize_build_space: true
+
