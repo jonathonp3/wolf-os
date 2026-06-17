@@ -23,7 +23,9 @@ jobs:
       fail-fast: false
       matrix:
         recipe:
-          - recipes/recipe.yml
+          # THE FIX: Use just the filename. 
+          # BlueBuild looks in the 'recipes/' folder automatically.
+          - recipe.yml
     steps:
       - name: Build Custom Image
         uses: blue-build/github-action@v1
