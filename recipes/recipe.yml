@@ -1,0 +1,45 @@
+name: wolf-os
+description: A declarative, high-performance Nix-style Fedora Atomic workstation.
+base-image: quay.io/fedora/fedora-silverblue
+image-version: 44
+
+modules:
+  - type: files
+    files:
+      - config/sysusers.d: /usr/lib/sysusers.d
+      - config/tmpfiles.d: /usr/lib/tmpfiles.d
+      - config/polkit-1: /usr/share/polkit-1
+      - files/pia-backup.tar.gz: /tmp/pia-backup.tar.gz
+
+  - type: rpm-ostree
+    repos:
+      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
+      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
+    install:
+      - distrobox
+      - gparted
+      - mesa-va-drivers-freeworld
+      - pluma
+      - vlc
+      - clinfo
+      - libvirt-daemon-config-network
+      - libvirt-daemon-kvm
+      - qemu-kvm
+      - virt-install
+      - virt-manager
+      - virt-viewer
+      - libnsl
+      - libxcrypt-compat
+      - nss-tools
+      - xterm
+      - libXaw
+      - libutempter
+      - mkfontscale
+      - xorg-x11-fonts-misc
+      - libxkbcommon-x11
+      - wget2
+
+  - type: script
+    scripts:
+      - setup-wolf-os.sh
+
