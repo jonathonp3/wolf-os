@@ -6,12 +6,13 @@ image-version: 44
 modules:
   - type: files
     files:
-      - source: config/sysusers.d
-        destination: /usr/lib/sysusers.d
-      - source: config/tmpfiles.d
-        destination: /usr/lib/tmpfiles.d
-      - source: config/polkit-1/rules.d
-        destination: /usr/share/polkit-1/rules.d
+      # We point directly to the files to avoid "directory not found" errors
+      - source: config/sysusers.d/wolf-os.conf
+        destination: /usr/lib/sysusers.d/wolf-os.conf
+      - source: config/tmpfiles.d/piavpn.conf
+        destination: /usr/lib/tmpfiles.d/piavpn.conf
+      - source: config/polkit-1/rules.d/80-libvirt.rules
+        destination: /usr/share/polkit-1/rules.d/80-libvirt.rules
       - source: files/pia-backup.tar.gz
         destination: /tmp/pia-backup.tar.gz
 
