@@ -4,18 +4,6 @@ base-image: quay.io/fedora/fedora-silverblue
 image-version: 44
 
 modules:
-  - type: files
-    files:
-      # We point directly to the files to avoid "directory not found" errors
-      - source: config/sysusers.d/wolf-os.conf
-        destination: /usr/lib/sysusers.d/wolf-os.conf
-      - source: config/tmpfiles.d/piavpn.conf
-        destination: /usr/lib/tmpfiles.d/piavpn.conf
-      - source: config/polkit-1/rules.d/80-libvirt.rules
-        destination: /usr/share/polkit-1/rules.d/80-libvirt.rules
-      - source: files/pia-backup.tar.gz
-        destination: /tmp/pia-backup.tar.gz
-
   - type: rpm-ostree
     repos:
       - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
