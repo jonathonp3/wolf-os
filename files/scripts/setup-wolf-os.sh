@@ -12,32 +12,48 @@ dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
 dnf makecache
 
 # Install the drivers that were failing before
-dnf install -y mesa-va-drivers-freeworld
 
-# 2. PREPARE THE STORE AND EXTRACT PIA
+# 1. Extract into the Store
 mkdir -p /usr/lib/pia-engine
-# Note: BlueBuild mounts your 'files' folder at /tmp/files
-tar -xpJf /tmp/files/tmp/pia-backup.tar.xz -C /usr/lib/pia-engine/
+tar -xpJf /tmp/pia-backup.tar.xz -C /usr/lib/pia-engine/
 
-# 3. WIRE SYSTEMD SERVICE
+# 2. DECLARATIVE BLUEPRINTS (Identity and Wiring)
+# We create these directly in /usr/lib so they are ALWAYS in the image
+mkdir -p /usr/lib/sysusers.d /usr/lib/tmpfiles.d
+
+cat <<EOF > /usr/lib/sysusers.d/wolf-os.conf
+g piavpn - -
+g piahnsd - -
+m jonathon libvirt
+m jonathon piavpn
+EOF
+
+cat <<EOF > /usr/lib/tmpfiles.d/piavpn.conf
+d /var/lib/piavpn 0775 root piavpn -
+d /var/run/piavpn 0775 root piavpn -
+d /var/opt/piavpn 0755 root root -
+L /var/opt/piavpn/bin - - - - /usr/lib/pia-engine/opt/piavpn/bin
+L /var/opt/piavpn/lib - - - - /usr/lib/pia-engine/opt/piavpn/lib
+L /var/opt/piavpn/var - - - - /var/lib/piavpn
+EOF
+
+# 3. WIRE SYSTEM FILES (Service and Network)
+mkdir -p /usr/lib/systemd/system /usr/lib/NetworkManager/conf.d
 cp /usr/lib/pia-engine/etc/systemd/system/piavpn.service /usr/lib/systemd/system/piavpn.service
+cp /usr/lib/pia-engine/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
+
+# 4. INJECT SECURITY CONTEXT
+# This allows the daemon to escape the restricted domain
 sed -i '/\[Service\]/a SELinuxContext=system_u:system_r:unconfined_t:s0' /usr/lib/systemd/system/piavpn.service
 
-# 4. WIRE NETWORKMANAGER & GUI
-mkdir -p /usr/lib/NetworkManager/conf.d
-cp /usr/lib/pia-engine/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
+# 5. UI COMPONENTS
 mkdir -p /usr/share/applications /usr/share/pixmaps
 cp /usr/lib/pia-engine/usr/share/applications/piavpn.desktop /usr/share/applications/piavpn.desktop
 cp /usr/lib/pia-engine/usr/share/pixmaps/piavpn.png /usr/share/pixmaps/piavpn.png
 
-# 5. SECURITY & PERMISSIONS
+# 6. PERMISSIONS & ENABLE
 setcap 'cap_net_bind_service=+ep' /usr/lib/pia-engine/opt/piavpn/bin/pia-unbound || true
-# Ensure correct ownership for the GUI (ID 1000)
-chown 1000:0 /usr/lib/pia-engine/opt/piavpn/bin/pia-client
-chown 1000:0 /usr/lib/pia-engine/opt/piavpn/bin/piactl
+systemctl enable libvirtd.service piavpn.service
 
-# 6. ENABLE SERVICES
-systemctl enable libvirtd.service virtlogd.service piavpn.service
-
-echo "✅ Wolf-OS Assembly Complete!"
+echo "✅ Wolf-OS Generation Complete!"
 
