@@ -1,29 +1,33 @@
 #!/bin/bash
 set -e
 
-echo "🚀 Assembling Wolf-OS Components (XZ Optimized)..."
+echo "🚀 Assembling Wolf-OS Components..."
 
-# 1. Prepare the Store and Extract (Note the -xpJf flag for XZ)
+# 1. Extract the engine
 mkdir -p /usr/lib/pia-engine
 tar -xpJf /tmp/pia-backup.tar.xz -C /usr/lib/pia-engine/
 
-# 2. Wire the Systemd Service
+# 2. INSTALL HARDWARE CODECS (The DNF way)
+echo "📦 Installing hardware codecs from RPM Fusion..."
+dnf install -y mesa-va-drivers-freeworld
+
+# 3. Wire the Systemd Service
 cp /usr/lib/pia-engine/etc/systemd/system/piavpn.service /usr/lib/systemd/system/piavpn.service
 sed -i '/\[Service\]/a SELinuxContext=system_u:system_r:unconfined_t:s0' /usr/lib/systemd/system/piavpn.service
 
-# 3. Wire the NetworkManager Config
+# 4. Wire the NetworkManager Config
 mkdir -p /usr/lib/NetworkManager/conf.d
 cp /usr/lib/pia-engine/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
 
-# 4. Wire the GUI
+# 5. Wire the GUI
 mkdir -p /usr/share/applications /usr/share/pixmaps
 cp /usr/lib/pia-engine/usr/share/applications/piavpn.desktop /usr/share/applications/piavpn.desktop
 cp /usr/lib/pia-engine/usr/share/pixmaps/piavpn.png /usr/share/pixmaps/piavpn.png
 
-# 5. Apply Security Capabilities
+# 6. Apply Security Capabilities
 setcap 'cap_net_bind_service=+ep' /usr/lib/pia-engine/opt/piavpn/bin/pia-unbound || true
 
-# 6. Enable Services
+# 7. Enable Services
 systemctl enable libvirtd.service virtlogd.service piavpn.service
 
 echo "✅ Wolf-OS Assembly Complete!"
