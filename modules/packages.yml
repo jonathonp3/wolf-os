@@ -6,7 +6,7 @@ install:
   - pluma
   - vlc
   - clinfo
-  - mesa-va-drivers-freeworld # This will be found now!
+  # mesa-va-drivers-freeworld # This will be found now!
   - libvirt-daemon-config-network
   - libvirt-daemon-kvm
   - qemu-kvm
