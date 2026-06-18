@@ -8,8 +8,8 @@ mkdir -p /usr/lib/pia-engine
 tar -xpJf /tmp/pia-backup.tar.xz -C /usr/lib/pia-engine/
 
 # 2. INSTALL HARDWARE CODECS (The DNF way)
-echo "📦 Installing hardware codecs from RPM Fusion..."
-dnf install -y mesa-va-drivers-freeworld
+# echo "📦 Installing hardware codecs from RPM Fusion..."
+# dnf install -y mesa-va-drivers-freeworld
 
 # 3. Wire the Systemd Service
 cp /usr/lib/pia-engine/etc/systemd/system/piavpn.service /usr/lib/systemd/system/piavpn.service
