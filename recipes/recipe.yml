@@ -4,17 +4,21 @@ base-image: quay.io/fedora/fedora-silverblue
 image-version: 44
 
 modules:
+  # MISSION 1: Enable RPM Fusion correctly (Bazzite Style)
+  - type: akmods
+    install:
+      - common # This installs the RPM Fusion repo keys and refreshes metadata
+
+  # MISSION 2: Install your optimized package stack
   - type: rpm-ostree
-    repos:
-      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
-      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
     install:
       - distrobox
       - gparted
       - pluma
       - vlc
       - clinfo
-      - mesa-va-drivers-freeworld # BACK HERE
+      # Now that RPM Fusion is active, this package will be found
+      - mesa-va-drivers-freeworld 
       - libvirt-daemon-config-network
       - libvirt-daemon-kvm
       - qemu-kvm
@@ -32,6 +36,7 @@ modules:
       - libxkbcommon-x11
       - wget2
 
+  # MISSION 3: Assembly Surgery
   - type: script
     scripts:
       - setup-wolf-os.sh
