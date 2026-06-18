@@ -4,20 +4,8 @@ base-image: quay.io/fedora/fedora-silverblue
 image-version: 44
 
 modules:
-  - type: files
-    files:
-      - source: config/sysusers.d/wolf-os.conf
-        destination: /usr/lib/sysusers.d/wolf-os.conf
-      - source: config/tmpfiles.d/piavpn.conf
-        destination: /usr/lib/tmpfiles.d/piavpn.conf
-      - source: config/polkit-1/rules.d/80-libvirt.rules
-        destination: /usr/share/polkit-1/rules.d/80-libvirt.rules
-      - source: files/tmp/pia-backup.tar.xz
-        destination: /tmp/pia-backup.tar.xz
-
   - type: rpm-ostree
     repos:
-      # We keep these here, but we will ensure they are refreshed
       - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
       - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
     install:
@@ -42,7 +30,6 @@ modules:
       - xorg-x11-fonts-misc
       - libxkbcommon-x11
       - wget2
-      # REMOVED mesa-va-drivers-freeworld from here to move it to the script
 
   - type: script
     scripts:
