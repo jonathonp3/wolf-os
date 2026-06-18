@@ -1,43 +1,17 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: wolf-os
 description: A declarative, high-performance Nix-style Fedora Atomic workstation.
 base-image: quay.io/fedora/fedora-silverblue
 image-version: 44
 
 modules:
-  # MISSION 1: Enable RPM Fusion correctly (Bazzite Style)
-  - type: akmods
-    install:
-      - common # This installs the RPM Fusion repo keys and refreshes metadata
+  # 1. First, register the repositories (Transaction 1)
+  - from-file: ../modules/repositories.yml
 
-  # MISSION 2: Install your optimized package stack
-  - type: rpm-ostree
-    install:
-      - distrobox
-      - gparted
-      - pluma
-      - vlc
-      - clinfo
-      # Now that RPM Fusion is active, this package will be found
-      - mesa-va-drivers-freeworld 
-      - libvirt-daemon-config-network
-      - libvirt-daemon-kvm
-      - qemu-kvm
-      - virt-install
-      - virt-manager
-      - virt-viewer
-      - libnsl
-      - libxcrypt-compat
-      - nss-tools
-      - xterm
-      - libXaw
-      - libutempter
-      - mkfontscale
-      - xorg-x11-fonts-misc
-      - libxkbcommon-x11
-      - wget2
+  # 2. Second, install the software (Transaction 2)
+  - from-file: ../modules/packages.yml
 
-  # MISSION 3: Assembly Surgery
+  # 3. Third, run the assembly script (Post-install logic)
   - type: script
     scripts:
       - setup-wolf-os.sh
-
