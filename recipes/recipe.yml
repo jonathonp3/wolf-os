@@ -14,6 +14,7 @@ modules:
       - pluma
       - vlc
       - clinfo
+      - mesa-va-drivers-freeworld # BACK HERE
       - libvirt-daemon-config-network
       - libvirt-daemon-kvm
       - qemu-kvm
