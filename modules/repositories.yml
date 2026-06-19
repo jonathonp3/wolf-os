@@ -2,9 +2,9 @@
 type: rpm-ostree
 repos:
   # RPM Fusion Free (For mesa-freeworld drivers)
-  # https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
+  - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
   # RPM Fusion Non-Free
-  # https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
+  - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
   # Tailscale
   - https://pkgs.tailscale.com/stable/fedora/tailscale.repo
   # Docker
