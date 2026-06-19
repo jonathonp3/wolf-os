@@ -3,10 +3,6 @@ set -euo pipefail
 
 echo "🚀 Starting Wolf-OS Master Assembly..."
 
-# --- MISSION 1: HARDWARE & LIBS ---
-dnf install -y libnsl libxcrypt-compat nss-tools xterm libXaw libutempter \
-               mkfontscale xorg-x11-fonts-misc libxkbcommon-x11 mesa-va-drivers-freeworld
-dnf makecache
 
 # --- MISSION 2: IDENTITY ---
 mkdir -p /usr/lib/sysusers.d
@@ -14,7 +10,7 @@ cat <<EOF > /usr/lib/sysusers.d/wolf-os.conf
 g piavpn - -
 g piahnsd - -
 m jonathon libvirt
-m jonathon piavpn
+# m jonathon piavpn
 EOF
 
 # --- MISSION 3: THE MASTER WIRING BLUEPRINT ---

@@ -6,13 +6,19 @@ install:
   - pluma
   - vlc
   - clinfo
-  # mesa-va-drivers-freeworld # This will be found now!
+  
+  # rpmfusion
+  - mesa-va-drivers-freeworld
+  
+  # Virtualisation stack
   - libvirt-daemon-config-network
   - libvirt-daemon-kvm
   - qemu-kvm
   - virt-install
   - virt-manager
   - virt-viewer
+  
+  # PIA
   - libnsl
   - libxcrypt-compat
   - nss-tools
