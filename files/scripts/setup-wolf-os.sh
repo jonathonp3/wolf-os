@@ -21,7 +21,6 @@ d /var/run/piavpn 0775 root piavpn -
 d /var/opt/piavpn 0755 root root -
 L /var/opt/piavpn/bin - - - - /usr/libexec/piavpn/opt/piavpn/bin
 L /var/opt/piavpn/lib - - - - /usr/libexec/piavpn/opt/piavpn/lib
-L /var/opt/piavpn/etc - - - - /usr/libexec/piavpn/opt/piavpn/etc
 L /var/opt/piavpn/plugins - - - - /usr/libexec/piavpn/opt/piavpn/plugins
 L /var/opt/piavpn/qml - - - - /usr/libexec/piavpn/opt/piavpn/qml
 L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
