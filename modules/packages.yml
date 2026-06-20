@@ -2,10 +2,16 @@
 type: rpm-ostree
 install:
   - distrobox
+  - evolution
   - gparted
   - pluma
   - vlc
+  - yt-dlp
+
+  # LLM container
   - clinfo
+  - fuse
+  - fuse-libs
   
   # rpmfusion
   - mesa-va-drivers-freeworld
