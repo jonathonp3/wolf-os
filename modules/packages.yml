@@ -24,6 +24,13 @@ install:
   - virt-manager
   - virt-viewer
   
+  # Docker
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+  
   # PIA
   - libnsl
   - libxcrypt-compat
