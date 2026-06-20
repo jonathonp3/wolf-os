@@ -47,8 +47,6 @@ cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkMana
 # --- 7 APPLY THE WORKING DIRECTORY FIX - TESTED ON WORKSTATION ---
 sed -i 's|ExecStart=.*|ExecStart=/opt/piavpn/bin/pia-daemon|' /usr/lib/systemd/system/piavpn.service
 sed -i '/\[Service\]/a WorkingDirectory=/opt/piavpn' /usr/lib/systemd/system/piavpn.service
-# Diplomatic Passport for SELinux Enforcing mode
-sed -i '/\[Service\]/a SELinuxContext=system_u:system_r:unconfined_t:s0' /usr/lib/systemd/system/piavpn.service
 
 # --- 8: SET PERMISSIONS & FINALISE ---
 setcap 'cap_net_bind_service=+ep' /usr/libexec/piavpn/opt/piavpn/bin/pia-unbound || true
