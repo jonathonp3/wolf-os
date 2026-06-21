@@ -4,10 +4,11 @@
   ],
   "transports": {
     "docker": {
-      "ghcr.io/jonathonp3/wolf-os": [
+      "ghcr.io/jonathonp3/wolf-os:latest": [
         {
           "type": "sigstoreSigned",
-          "keyPath": "/etc/pki/containers/wolf-os.pub"
+          "keyPath": "/etc/pki/containers/wolf-os.pub",
+          "signedIdentity": { "type": "matchRepository" }
         }
       ],
       "quay.io/fedora/fedora-silverblue": [
