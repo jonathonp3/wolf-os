@@ -33,10 +33,12 @@ L /var/opt/piavpn/qml - - - - /usr/libexec/piavpn/opt/piavpn/qml
 L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
 L /var/opt/piavpn/var - - - - /var/lib/piavpn
 
-# 3. SECURITY COPIES: Automate the 'Signed' rebase trust
-# Use 'L' (Link) instead of 'C' (Copy) to FORCE the system to use policy
-L /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
-L /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
+# 3. SECURITY COPIES: replace the host policy with the image policy at boot
+r /etc/containers/policy.json - - - -
+C /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
+
+r /etc/pki/containers/wolf-os.pub - - - -
+C /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
 EOF
 
 # ---- 4. EXTRACT & STORE ---
