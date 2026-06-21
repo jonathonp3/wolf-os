@@ -11,17 +11,7 @@ modules:
   # 2. Install the software
   - from-file: ../modules/packages.yml
 
-  # 3. Ship security assets
-  - type: files
-    files:
-      # Map the policy to the factory etc path
-      - source: usr/share/containers/policy.json
-        destination: /usr/etc/containers/policy.json
-      # Map the key to the factory etc path
-      - source: usr/share/pki/containers/wolf-os.pub
-        destination: /usr/etc/pki/containers/wolf-os.pub
-
-  # 4. Run the assembly script
+  # 3. Run the assembly script
   - type: script
     scripts:
       - setup-wolf-os.sh

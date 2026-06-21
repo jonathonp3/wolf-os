@@ -35,7 +35,7 @@ EOF
 mkdir -p /usr/libexec/piavpn
 tar -xpJf /tmp/files/tmp/pia-backup.tar.xz -C /usr/libexec/piavpn/
 
-# --- 5. SYSTEM INTEGRATION ---
+# --- 5: SYSTEM INTEGRATION ---
 mkdir -p /usr/lib/systemd/system /usr/lib/NetworkManager/conf.d /usr/share/applications /usr/share/pixmaps
 
 # --- 6. Replicating successful Workstation steps
@@ -48,21 +48,11 @@ cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkMana
 sed -i 's|ExecStart=.*|ExecStart=/opt/piavpn/bin/pia-daemon|' /usr/lib/systemd/system/piavpn.service
 sed -i '/\[Service\]/a WorkingDirectory=/opt/piavpn' /usr/lib/systemd/system/piavpn.service
 
-# --- 8. SET PERMISSIONS ---
+# --- 8. SET PERMISSIONS & FINALISE ---
 setcap 'cap_net_bind_service=+ep' /usr/libexec/piavpn/opt/piavpn/bin/pia-unbound || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/pia-client || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/piactl || true
 
-# --- 9. AUTOMATED SECURITY HANDSHAKE (Bazzite-Style) ---
-# Create the Factory directories ---
-mkdir -p /usr/etc/containers /usr/etc/pki/containers
-
-# Copy policy and key to the Factory path ---
-# (Ensures they appear in /etc automatically on boot)
-cp /usr/share/containers/policy.json /usr/etc/containers/policy.json
-cp /usr/share/pki/containers/wolf-os.pub /usr/etc/pki/containers/wolf-os.pub
-
-# --- 10 FINALISE ---
 systemctl enable libvirtd.service virtlogd.service piavpn.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
