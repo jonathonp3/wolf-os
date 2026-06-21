@@ -10,9 +10,22 @@ modules:
 
   # 2. Install the software
   - from-file: ../modules/packages.yml
+  
+  # 3. 
+  - type: files
+    files:
+      # THE FIX: Point to the new 'usr/etc' source path
+      - source: usr/etc/containers/policy.json
+        destination: /usr/etc/containers/policy.json
+        
+      # Ensure the key is also pointing to the right source
+      - source: usr/etc/pki/containers/wolf-os.pub
+        destination: /usr/etc/pki/containers/wolf-os.pub
 
-  # 3. Run the assembly script
+
+  # 4. Run the assembly script
   - type: script
     scripts:
       - setup-wolf-os.sh
+      
 
