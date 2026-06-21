@@ -14,14 +14,14 @@ modules:
   # 3. Ship containers policy + cosign public key
   - type: files
     files:
-      # This puts the rule in the factory policy folder
-      - source: files/usr/share/containers/policy.json
+      # THE FIX: Removed the 'files/' prefix because BlueBuild starts inside that folder
+      - source: usr/share/containers/policy.json
         destination: /usr/etc/containers/policy.json
-      # This puts the key in the factory keys folder
-      - source: cosign.pub
+      - source: ../cosign.pub # Go up one level to find the key in the repo root
         destination: /usr/etc/pki/containers/wolf-os.pub
 
   # 4. Run the assembly script
   - type: script
     scripts:
       - setup-wolf-os.sh
+
