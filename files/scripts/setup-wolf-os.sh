@@ -34,10 +34,12 @@ L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
 L /var/opt/piavpn/var - - - - /var/lib/piavpn
 
 # 3. SECURITY COPIES: replace the host policy with the image policy at boot
+# Force-replace the host policy with the master image policy at every boot
 r /etc/containers/policy.json - - - -
 C /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
 
-r /etc/pki/containers/wolf-os.pub - - - -
+# Ensure the key folder exists and copy the key (standard copy, no removal needed)
+d /etc/pki/containers 0755 root root -
 C /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
 EOF
 
