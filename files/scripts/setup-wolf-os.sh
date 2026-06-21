@@ -13,22 +13,30 @@ m jonathon libvirt
 # m jonathon piavpn
 EOF
 
-# --- 2. WIRING BLUEPRINT --
-# Note with Silverblue, /opt is a link to /var/opt. Using /var/opt
+# --- 3: WIRING & SECURITY BLUEPRINT ---
+echo "🔗 Configuring Declarative Wiring and Security Trust..."
 mkdir -p /usr/lib/tmpfiles.d
 cat <<EOF > /usr/lib/tmpfiles.d/piavpn.conf
+# 1. Folders for VPN and Security
 d /var/lib/piavpn 0775 root piavpn -
 d /var/run/piavpn 0775 root piavpn -
 d /var/opt/piavpn 0755 root root -
 d /var/opt/piavpn/etc 0775 root piavpn -
+d /etc/containers 0755 root root -
+d /etc/pki/containers 0755 root root -
 
-# --- 3. BLUEPRINT: Every directory the app needs ---
+# 2. VPN LINKS: Bridge /var back to the immutable /usr store
 L /var/opt/piavpn/bin - - - - /usr/libexec/piavpn/opt/piavpn/bin
 L /var/opt/piavpn/lib - - - - /usr/libexec/piavpn/opt/piavpn/lib
 L /var/opt/piavpn/plugins - - - - /usr/libexec/piavpn/opt/piavpn/plugins
 L /var/opt/piavpn/qml - - - - /usr/libexec/piavpn/opt/piavpn/qml
 L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
 L /var/opt/piavpn/var - - - - /var/lib/piavpn
+
+# 3. SECURITY COPIES: Automate the 'Signed' rebase trust
+# Type 'C' copies the file from the image (/usr/etc) to the host (/etc) if missing
+C /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
+C /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
 EOF
 
 # ---- 4. EXTRACT & STORE ---
