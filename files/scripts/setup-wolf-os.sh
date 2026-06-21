@@ -31,7 +31,7 @@ L /var/opt/piavpn/lib - - - - /usr/libexec/piavpn/opt/piavpn/lib
 L /var/opt/piavpn/plugins - - - - /usr/libexec/piavpn/opt/piavpn/plugins
 L /var/opt/piavpn/qml - - - - /usr/libexec/piavpn/opt/piavpn/qml
 L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
-L /var/opt/piavpn/var - - - - /var/lib/piavpn
+L /var/opt/piavpn/var - - - - /var/lib/piavpnback file 
 
 # 3. SECURITY COPIES: replace the host policy with the image policy at boot
 # Force-replace the host policy with the master image policy at every boot
