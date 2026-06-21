@@ -5,13 +5,23 @@ base-image: quay.io/fedora/fedora-silverblue
 image-version: 44
 
 modules:
-  # 1. First, register the repositories (Transaction 1)
+  # 1. Register the repositories
   - from-file: ../modules/repositories.yml
 
-  # 2. Second, install the software (Transaction 2)
+  # 2. Install the software
   - from-file: ../modules/packages.yml
 
-  # 3. Third, run the assembly script (Post-install logic)
+  # 3. Ship containers policy + cosign public key
+  - type: files
+    files:
+      # This puts the rule in the factory policy folder
+      - source: files/usr/share/containers/policy.json
+        destination: /usr/etc/containers/policy.json
+      # This puts the key in the factory keys folder
+      - source: cosign.pub
+        destination: /usr/etc/pki/containers/wolf-os.pub
+
+  # 4. Run the assembly script
   - type: script
     scripts:
       - setup-wolf-os.sh

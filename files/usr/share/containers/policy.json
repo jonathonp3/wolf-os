@@ -1,0 +1,23 @@
+{
+  "default": [
+    { "type": "insecureAcceptAnything" }
+  ],
+  "transports": {
+    "docker": {
+      "ghcr.io/jonathonp3/wolf-os": [
+        {
+          "type": "sigstoreSigned",
+          "keyPath": "/etc/pki/containers/wolf-os.pub"
+        }
+      ],
+      "quay.io/fedora/fedora-silverblue": [
+        {
+          "type": "signedBy",
+          "keyType": "GPGKeys",
+          "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-44-x86_64"
+        }
+      ]
+    }
+  }
+}
+
