@@ -11,13 +11,14 @@ modules:
   # 2. Install the software
   - from-file: ../modules/packages.yml
 
-  # 3. Ship containers policy + cosign public key
+  # 3. Ship security assets
   - type: files
     files:
-      # THE FIX: Removed the 'files/' prefix because BlueBuild starts inside that folder
+      # Map the policy to the factory etc path
       - source: usr/share/containers/policy.json
         destination: /usr/etc/containers/policy.json
-      - source: ../cosign.pub # Go up one level to find the key in the repo root
+      # Map the key to the factory etc path
+      - source: usr/share/pki/containers/wolf-os.pub
         destination: /usr/etc/pki/containers/wolf-os.pub
 
   # 4. Run the assembly script
