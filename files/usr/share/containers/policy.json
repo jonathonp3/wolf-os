@@ -16,8 +16,13 @@
           "keyType": "GPGKeys",
           "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-44-x86_64"
         }
+      ],
+      "": [
+        { "type": "insecureAcceptAnything" }
       ]
-    }
+    },
+    "docker-daemon": { "": [ { "type": "insecureAcceptAnything" } ] },
+    "containers-storage": { "": [ { "type": "insecureAcceptAnything" } ] }
   }
 }
 

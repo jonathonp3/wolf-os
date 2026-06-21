@@ -35,24 +35,34 @@ EOF
 mkdir -p /usr/libexec/piavpn
 tar -xpJf /tmp/files/tmp/pia-backup.tar.xz -C /usr/libexec/piavpn/
 
-# --- 5: SYSTEM INTEGRATION ---
+# --- 5. SYSTEM INTEGRATION ---
 mkdir -p /usr/lib/systemd/system /usr/lib/NetworkManager/conf.d /usr/share/applications /usr/share/pixmaps
 
-# --- 6: Replicating successful Workstation steps
+# --- 6. Replicating successful Workstation steps
 cp /usr/libexec/piavpn/etc/systemd/system/piavpn.service /usr/lib/systemd/system/piavpn.service
 cp /usr/libexec/piavpn/usr/share/applications/piavpn.desktop /usr/share/applications/piavpn.desktop
 cp /usr/libexec/piavpn/usr/share/pixmaps/piavpn.png /usr/share/pixmaps/piavpn.png
 cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
 
-# --- 7 APPLY THE WORKING DIRECTORY FIX - TESTED ON WORKSTATION ---
+# --- 7. APPLY THE WORKING DIRECTORY FIX - TESTED ON WORKSTATION ---
 sed -i 's|ExecStart=.*|ExecStart=/opt/piavpn/bin/pia-daemon|' /usr/lib/systemd/system/piavpn.service
 sed -i '/\[Service\]/a WorkingDirectory=/opt/piavpn' /usr/lib/systemd/system/piavpn.service
 
-# --- 8: SET PERMISSIONS & FINALISE ---
+# --- 8. SET PERMISSIONS ---
 setcap 'cap_net_bind_service=+ep' /usr/libexec/piavpn/opt/piavpn/bin/pia-unbound || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/pia-client || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/piactl || true
 
+# --- 9. AUTOMATED SECURITY HANDSHAKE (Bazzite-Style) ---
+# Create the Factory directories ---
+mkdir -p /usr/etc/containers /usr/etc/pki/containers
+
+# Copy policy and key to the Factory path ---
+# (Ensures they appear in /etc automatically on boot)
+cp /usr/share/containers/policy.json /usr/etc/containers/policy.json
+cp /usr/share/pki/containers/wolf-os.pub /usr/etc/pki/containers/wolf-os.pub
+
+# --- 10 FINALISE ---
 systemctl enable libvirtd.service virtlogd.service piavpn.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
