@@ -46,7 +46,7 @@ Upgrade to the latest build
 rpm-ostree upgrade
 ```
 
-6. Check status
+Check status
 ```bash
 rpm-ostree status
 ```
