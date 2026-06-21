@@ -34,9 +34,9 @@ L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
 L /var/opt/piavpn/var - - - - /var/lib/piavpn
 
 # 3. SECURITY COPIES: Automate the 'Signed' rebase trust
-# Type 'C' copies the file from the image (/usr/etc) to the host (/etc) if missing
-C /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
-C /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
+# Use 'L' (Link) instead of 'C' (Copy) to FORCE the system to use policy
+L /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
+L /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
 EOF
 
 # ---- 4. EXTRACT & STORE ---
