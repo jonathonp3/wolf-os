@@ -65,6 +65,22 @@ sudo bluebuild generate-iso --iso-name wolf-os iso image ghcr.io/jonathonp3/wolf
 ```
 
 ## Rebase to unsigned official Silverblue 44
+
+Wolf-OS policy is set to reject everything that isn't signed by the repository key. You will need to reset local policy to allow unsigned images:
+
+1.  To reset local policy:
+```bash
+sudo bash -c 'cat <<EOF > /etc/containers/policy.json
+{
+    "default": [
+        {
+            "type": "insecureAcceptAnything"
+        }
+    ]
+}
+EOF'
+```
+2. Rebase to Official Fedora Silverblue 44:
 ```bash
 sudo rpm-ostree rebase \
   ostree-unverified-registry:quay.io/fedora/fedora-silverblue:44
