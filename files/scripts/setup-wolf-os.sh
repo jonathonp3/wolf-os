@@ -65,7 +65,7 @@ setcap 'cap_net_bind_service=+ep' /usr/libexec/piavpn/opt/piavpn/bin/pia-unbound
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/pia-client || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/piactl || true
 
-systemctl enable libvirtd.service virtlogd.service piavpn.service
+systemctl enable libvirtd.service virtlogd.service piavpn.service sshd.service docker.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
