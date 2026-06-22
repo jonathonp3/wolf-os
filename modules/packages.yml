@@ -5,6 +5,7 @@ install:
   - evolution
   - gparted
   - pluma
+  - vim
   - vlc
   - yt-dlp
 
