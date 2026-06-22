@@ -1,29 +1,40 @@
 {
   "default": [
-    { "type": "reject" }
+    {
+      "type": "reject"
+    }
   ],
   "transports": {
     "docker": {
-      "ghcr.io/jonathonp3/wolf-os:latest": [
+      "ghcr.io/jonathonp3/wolf-os": [
         {
           "type": "sigstoreSigned",
           "keyPath": "/etc/pki/containers/wolf-os.pub",
-          "signedIdentity": { "type": "matchRepository" }
-        }
-      ],
-      "quay.io/fedora/fedora-silverblue": [
-        {
-          "type": "signedBy",
-          "keyType": "GPGKeys",
-          "keyPath": "/etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-44-x86_64"
+          "signedIdentity": {
+            "type": "matchRepository"
+          }
         }
       ],
       "": [
-        { "type": "insecureAcceptAnything" }
+        {
+          "type": "insecureAcceptAnything"
+        }
       ]
     },
-    "docker-daemon": { "": [ { "type": "insecureAcceptAnything" } ] },
-    "containers-storage": { "": [ { "type": "insecureAcceptAnything" } ] }
+    "docker-daemon": {
+      "": [
+        {
+          "type": "insecureAcceptAnything"
+        }
+      ]
+    },
+    "containers-storage": {
+      "": [
+        {
+          "type": "insecureAcceptAnything"
+        }
+      ]
+    }
   }
 }
 
