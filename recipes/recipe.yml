@@ -20,7 +20,11 @@ modules:
         destination: /usr/etc/pki/containers/wolf-os.pub
       # THE KEY TO THE SIGNATURE
       - source: usr/etc/containers/registries.d/wolf-os.yaml
-        destination: /usr/etc/containers/registries.d/wolf-os.yaml        
+        destination: /usr/etc/containers/registries.d/wolf-os.yaml
+      # This overlays custom.xml themes into the system root
+      - source: usr/share/gtksourceview-5/styles
+        destination: /usr/share/gtksourceview-5/styles
+        
 
 
   # 4. Run the assembly script

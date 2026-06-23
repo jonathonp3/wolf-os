@@ -60,11 +60,24 @@ cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkMana
 sed -i 's|ExecStart=.*|ExecStart=/opt/piavpn/bin/pia-daemon|' /usr/lib/systemd/system/piavpn.service
 sed -i '/\[Service\]/a WorkingDirectory=/opt/piavpn' /usr/lib/systemd/system/piavpn.service
 
-# --- 8. SET PERMISSIONS & FINALISE ---
+# --- 8. SET PERMISSIONS
 setcap 'cap_net_bind_service=+ep' /usr/libexec/piavpn/opt/piavpn/bin/pia-unbound || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/pia-client || true
 chown 1000:0 /usr/libexec/piavpn/opt/piavpn/bin/piactl || true
 
+# --- 9. NATIVE EDITOR INTEGRATION ---
+# Remove the Flatpak version
+flatpak uninstall --system -y org.gnome.TextEditor || true
+
+# Set favourite as default
+mkdir -p /usr/share/glib-2.0/schemas/
+cat <<EOF > /usr/share/glib-2.0/schemas/99-wolf-os-editor.gschema.override
+[org.gnome.TextEditor]
+style-scheme='solarized-light-golden-sand'
+EOF
+glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+# --- 10. FINALISE ---
 systemctl enable libvirtd.service virtlogd.service piavpn.service sshd.service docker.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
