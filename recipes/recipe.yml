@@ -24,6 +24,11 @@ modules:
       # This overlays custom.xml themes into the system root
       - source: usr/share/gtksourceview-5/styles
         destination: /usr/share/gtksourceview-5/styles
+      # Remove gnome-text-editor flatpak on boot (using custom rpm)
+      - source: usr/libexec/wolf-os-firstboot.sh
+        destination: /usr/libexec/wolf-os-firstboot.sh
+      - source: usr/lib/systemd/system/wolf-os-cleanup.service
+        destination: /usr/lib/systemd/system/wolf-os-cleanup.service
         
 
 

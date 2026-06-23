@@ -80,7 +80,7 @@ glib-compile-schemas /usr/share/glib-2.0/schemas/
 # --- 10. AUTOMATED CLEANUP ---
 echo "⚙️ Setting up First-Boot cleanup service..."
 
-# Ensure the script is executable
+# Ensure clean up script is executable ----
 chmod +x /usr/libexec/wolf-os-firstboot.sh
 
 # --- 10. FINALISE ---
