@@ -77,8 +77,14 @@ style-scheme='solarized-light-golden-sand'
 EOF
 glib-compile-schemas /usr/share/glib-2.0/schemas/
 
+# --- 10. AUTOMATED CLEANUP ---
+echo "⚙️ Setting up First-Boot cleanup service..."
+
+# Ensure the script is executable
+chmod +x /usr/libexec/wolf-os-firstboot.sh
+
 # --- 10. FINALISE ---
-systemctl enable libvirtd.service virtlogd.service piavpn.service sshd.service docker.service
+systemctl enable libvirtd.service virtlogd.service piavpn.service sshd.service docker.service wolf-os-cleanup.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
