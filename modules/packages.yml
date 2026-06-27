@@ -3,7 +3,6 @@ type: rpm-ostree
 install:
   - distrobox
   - evolution
-  - gnome-text-editor
   - gparted
   - pluma
   - vim
