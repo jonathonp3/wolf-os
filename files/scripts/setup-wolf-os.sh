@@ -3,6 +3,12 @@ set -euo pipefail
 
 echo "🚀 Starting Wolf-OS PIA Assembly..."
 
+# --- 1. PRE-INSTALL IDENTITY ---
+groupadd -r piavpn || true
+groupadd -r piahnsd || true
+groupadd -r docker || true
+groupadd -r libvirt-qemu || true
+
 # --- 1. IDENTITY ---
 mkdir -p /usr/lib/sysusers.d
 cat <<'EOF' > /usr/lib/sysusers.d/wolf-os.conf
