@@ -21,6 +21,8 @@ mkdir -p /usr/lib/systemd/system /usr/lib/NetworkManager/conf.d /usr/share/appli
 cp /usr/libexec/piavpn/etc/systemd/system/piavpn.service /usr/lib/systemd/system/piavpn.service
 cp /usr/libexec/piavpn/usr/share/applications/piavpn.desktop /usr/share/applications/piavpn.desktop
 cp /usr/libexec/piavpn/usr/share/pixmaps/piavpn.png /usr/share/pixmaps/piavpn.png
+# NetworkManager drop-ins under /usr/lib are shipped as part of the immutable image
+# so the config is always present even if /etc isn't populated/persisted the way we expect.
 cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
 
 # --- 7. SET WORKING DIRECTORY ---
