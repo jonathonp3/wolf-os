@@ -4,22 +4,21 @@ set -euo pipefail
 echo "🚀 Starting Wolf-OS PIA Assembly..."
 
 # --- 1. PRE-INSTALL IDENTITY ---
-groupadd -r piavpn || true
-groupadd -r piahnsd || true
-groupadd -r docker || true
-groupadd -r libvirt-qemu || true
-
-# --- 1. IDENTITY ---
-mkdir -p /usr/lib/sysusers.d
-cat <<'EOF' > /usr/lib/sysusers.d/wolf-os.conf
+RUN groupadd -r libvirt-qemu || true && \
+    groupadd -r piavpn || true && \
+    groupadd -r piahnsd || true && \
+    groupadd -r docker || true && \
+    groupadd -r virtnetwork || true && \
+    mkdir -p /usr/lib/sysusers.d && \
+    cat <<EOF > /usr/lib/sysusers.d/wolf-os.conf
 g piavpn - -
 g piahnsd - -
 g docker - -
 g libvirt-qemu - -
-
+g virtnetwork - -
+# Add jonathon to all power groups
 m jonathon libvirt
 m jonathon docker
-EOF
 
 # --- 3: WIRING & SECURITY BLUEPRINT ---
 echo "🔗 Configuring Declarative Wiring and Security Trust..."
@@ -30,10 +29,9 @@ d /var/lib/piavpn 0775 root piavpn -
 d /var/run/piavpn 0775 root piavpn -
 d /var/opt/piavpn 0755 root root -
 d /var/opt/piavpn/etc 0775 root piavpn -
-d /etc/containers 0755 root root -
-d /etc/pki/containers 0755 root root -
-
-# libvirt qemu logging dir (fixes virtlogd Permission denied)
+d /var/log/libvirt/qemu 0750 root libvirt-qemu -
+d /var/lib/libvirt/dnsmasq 0775 root virtnetwork -
+d /var/lib/libvirt/network 0775 root virtnetwork -
 d /var/log/libvirt/qemu 0750 root libvirt-qemu -
 
 # 2. VPN LINKS: Bridge /var back to the immutable /usr store
@@ -66,8 +64,7 @@ cp /usr/libexec/piavpn/usr/share/applications/piavpn.desktop /usr/share/applicat
 cp /usr/libexec/piavpn/usr/share/pixmaps/piavpn.png /usr/share/pixmaps/piavpn.png
 cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
 
-# --- 7. APPLY THE WORKING DIRECTORY FIX - TESTED ON WORKSTATION ---
-sed -i 's|ExecStart=.*|ExecStart=/opt/piavpn/bin/pia-daemon|' /usr/lib/systemd/system/piavpn.service
+# --- 7. SET WORKING DIRECTORY ---
 sed -i '/\[Service\]/a WorkingDirectory=/opt/piavpn' /usr/lib/systemd/system/piavpn.service
 
 # --- 8. SET PERMISSIONS
@@ -85,7 +82,7 @@ echo "⚙️ Setting up First-Boot cleanup service..."
 chmod +x /usr/libexec/wolf-os-firstboot.sh
 
 # --- 10. FINALISE ---
-systemctl enable libvirtd.service virtlogd.service virtstoraged.service piavpn.service sshd.service docker.service wolf-os-cleanup.service
+systemctl enable libvirtd.service virtlogd.service virtnetworkd.service virtstoraged.service virtnodedevd.socket piavpn.service sshd.service docker.service wolf-os-cleanup.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
