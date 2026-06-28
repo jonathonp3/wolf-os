@@ -30,9 +30,9 @@ d /var/run/piavpn 0775 root piavpn -
 d /var/opt/piavpn 0755 root root -
 d /var/opt/piavpn/etc 0775 root piavpn -
 d /var/log/libvirt/qemu 0750 root libvirt-qemu -
+d /var/lib/libvirt 0755 root virtnetwork -
 d /var/lib/libvirt/dnsmasq 0775 root virtnetwork -
 d /var/lib/libvirt/network 0775 root virtnetwork -
-d /var/log/libvirt/qemu 0750 root libvirt-qemu -
 
 # 2. VPN LINKS: Bridge /var back to the immutable /usr store
 L /var/opt/piavpn/bin - - - - /usr/libexec/piavpn/opt/piavpn/bin
