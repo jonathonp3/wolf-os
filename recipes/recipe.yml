@@ -29,7 +29,9 @@ modules:
       - source: usr/lib/tmpfiles.d/piavpn.conf
         destination: /usr/lib/tmpfiles.d/piavpn.conf
       - source: usr/lib/systemd/system/piavpn-tmpfiles.service
-        destination: /usr/lib/systemd/system/piavpn-tmpfiles.service  
+        destination: /usr/lib/systemd/system/piavpn-tmpfiles.service 
+      - source: usr/lib/sysusers.d/wolf-os.conf  
+        destination: /usr/lib/sysusers.d/wolf-os.conf
 
   # 4. Run the assembly script
   - type: script

@@ -8,51 +8,7 @@ RUN groupadd -r libvirt-qemu || true && \
     groupadd -r piavpn || true && \
     groupadd -r piahnsd || true && \
     groupadd -r docker || true && \
-    groupadd -r virtnetwork || true && \
-    mkdir -p /usr/lib/sysusers.d && \
-    cat <<EOF > /usr/lib/sysusers.d/wolf-os.conf
-g piavpn - -
-g piahnsd - -
-g docker - -
-g libvirt-qemu - -
-g virtnetwork - -
-# Add jonathon to all power groups
-m jonathon libvirt
-m jonathon docker
-
-# --- 3: WIRING & SECURITY BLUEPRINT ---
-echo "🔗 Configuring Declarative Wiring and Security Trust..."
-mkdir -p /usr/lib/tmpfiles.d
-cat <<'EOF' > /usr/lib/tmpfiles.d/piavpn.conf
-# 1. Folders for VPN and Security
-d /var/lib/piavpn 0775 root piavpn -
-d /var/run/piavpn 0775 root piavpn -
-d /var/opt/piavpn 0755 root root -
-d /var/opt/piavpn/etc 0775 root piavpn -
-d /var/log/libvirt/qemu 0750 root libvirt-qemu -
-d /var/lib/libvirt 0755 root virtnetwork -
-d /var/lib/libvirt/dnsmasq 0775 root virtnetwork -
-d /var/lib/libvirt/network 0775 root virtnetwork -
-
-# 2. VPN LINKS: Bridge /var back to the immutable /usr store
-L /var/opt/piavpn/bin - - - - /usr/libexec/piavpn/opt/piavpn/bin
-L /var/opt/piavpn/lib - - - - /usr/libexec/piavpn/opt/piavpn/lib
-L /var/opt/piavpn/plugins - - - - /usr/libexec/piavpn/opt/piavpn/plugins
-L /var/opt/piavpn/qml - - - - /usr/libexec/piavpn/opt/piavpn/qml
-L /var/opt/piavpn/share - - - - /usr/libexec/piavpn/opt/piavpn/share
-L /var/opt/piavpn/var - - - - /var/lib/piavpn
-
-# 3. SECURITY COPIES: replace the host policy with the image policy at boot
-r /etc/containers/policy.json - - - -
-C /etc/containers/policy.json - - - - /usr/etc/containers/policy.json
-
-# Ensure the key folder exists and copy the key
-d /etc/pki/containers 0755 root root -
-C /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
-EOF
-
-# systemd-tmpfiles --create /usr/lib/tmpfiles.d/piavpn.conf
-ls -l /usr/lib/tmpfiles.d/piavpn.conf
+    groupadd -r virtnetwork || true
 
 # ---- 4. EXTRACT & STORE ---
 mkdir -p /usr/libexec/piavpn
