@@ -25,7 +25,11 @@ modules:
       - source: usr/libexec/wolf-os-firstboot.sh
         destination: /usr/libexec/wolf-os-firstboot.sh
       - source: usr/lib/systemd/system/wolf-os-cleanup.service
-        destination: /usr/lib/systemd/system/wolf-os-cleanup.service  
+        destination: /usr/lib/systemd/system/wolf-os-cleanup.service
+      - source: usr/lib/tmpfiles.d/piavpn.conf
+        destination: /usr/lib/tmpfiles.d/piavpn.conf
+      - source: usr/lib/systemd/system/piavpn-tmpfiles.service
+        destination: /usr/lib/systemd/system/piavpn-tmpfiles.service  
 
   # 4. Run the assembly script
   - type: script

@@ -21,4 +21,5 @@ flatpak install --system -y wolf-os-apps org.gnome.TextEditor
 # 4. Clean up
 rm /tmp/wolf-os-apps.gpg
 
+
 echo "✅ Wolf-OS first-boot tasks complete."

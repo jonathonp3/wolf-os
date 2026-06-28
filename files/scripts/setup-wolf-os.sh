@@ -51,6 +51,9 @@ d /etc/pki/containers 0755 root root -
 C /etc/pki/containers/wolf-os.pub - - - - /usr/etc/pki/containers/wolf-os.pub
 EOF
 
+# systemd-tmpfiles --create /usr/lib/tmpfiles.d/piavpn.conf
+ls -l /usr/lib/tmpfiles.d/piavpn.conf
+
 # ---- 4. EXTRACT & STORE ---
 mkdir -p /usr/libexec/piavpn
 tar -xpJf /tmp/files/tmp/pia-backup.tar.xz -C /usr/libexec/piavpn/
@@ -82,7 +85,7 @@ echo "⚙️ Setting up First-Boot cleanup service..."
 chmod +x /usr/libexec/wolf-os-firstboot.sh
 
 # --- 10. FINALISE ---
-systemctl enable libvirtd.service virtlogd.service virtnetworkd.service virtstoraged.service virtnodedevd.socket piavpn.service sshd.service docker.service wolf-os-cleanup.service
+systemctl enable libvirtd.service virtlogd.service virtnetworkd.service virtstoraged.service virtnodedevd.socket piavpn.service sshd.service docker.service wolf-os-cleanup.service piavpn-tmpfiles.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
