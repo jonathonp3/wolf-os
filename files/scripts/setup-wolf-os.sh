@@ -26,6 +26,11 @@ cp /usr/libexec/piavpn/usr/share/pixmaps/piavpn.png /usr/share/pixmaps/piavpn.pn
 # so the config is always present even if /etc isn't populated/persisted the way we expect.
 cp /usr/libexec/piavpn/etc/NetworkManager/conf.d/wgpia.conf /usr/lib/NetworkManager/conf.d/wgpia.conf
 
+ln -sf /usr/libexec/piavpn/opt/piavpn/bin/piactl /usr/bin/piactl
+ln -sf /usr/libexec/piavpn/opt/piavpn/bin/pia-daemon /usr/bin/pia-daemon
+ln -sf /usr/libexec/piavpn/opt/piavpn/bin/pia-client /usr/bin/pia-client
+ln -sf /usr/libexec/piavpn/opt/piavpn/bin/pia-unbound /usr/bin/pia-unbound
+
 # --- 5. SET WORKING DIRECTORY ---
 sed -i '/\[Service\]/a WorkingDirectory=/opt/piavpn' /usr/lib/systemd/system/piavpn.service
 
@@ -37,14 +42,15 @@ chown root:piavpn /usr/libexec/piavpn/opt/piavpn/bin/piactl
 chmod 755 /usr/libexec/piavpn/opt/piavpn/bin/pia-client
 chmod 755 /usr/libexec/piavpn/opt/piavpn/bin/piactl
 
+
 # --- 7. AUTOMATED CLEANUP ---
 echo "⚙️ Setting up First-Boot cleanup service..."
 
 # Ensure clean up script is executable
-chmod +x /usr/libexec/wolf-os-firstboot.sh
+chmod +x /usr/libexec/sirius-os-firstboot.sh
 
 # --- 8. FINALISE ---
-systemctl enable libvirtd.service virtlogd.service virtnetworkd.service virtstoraged.service virtnodedevd.socket piavpn.service sshd.service docker.service wolf-os-cleanup.service piavpn-tmpfiles.service
+systemctl enable libvirtd.service virtlogd.service virtnetworkd.service virtstoraged.service virtnodedevd.socket piavpn.service sshd.service docker.service sirius-os-cleanup.service apps-tmpfiles.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
