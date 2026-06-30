@@ -28,8 +28,8 @@ modules:
         destination: /usr/lib/systemd/system/wolf-os-cleanup.service
       - source: usr/lib/tmpfiles.d/apps.conf
         destination: /usr/lib/tmpfiles.d/apps.conf
-      - source: usr/lib/systemd/system/apps.conf-tmpfiles.service
-        destination: /usr/lib/systemd/system/apps.conf-tmpfiles.service 
+      - source: usr/lib/systemd/system/apps-tmpfiles.service
+        destination: /usr/lib/systemd/system/apps-tmpfiles.service 
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
 
