@@ -1,0 +1,42 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: wolf-os
+description: A declarative, high-performance Nix-style Fedora Atomic workstation.
+base-image: quay.io/fedora/fedora-silverblue
+image-version: 44
+
+modules:
+  # 1. Register the repositories
+  - from-file: ../modules/repositories.yml
+
+  # 2. Install the software
+  - from-file: ../modules/packages.yml
+  
+  # 3. 
+  - type: files
+    files:
+      - source: usr/etc/containers/policy.json
+        destination: /usr/etc/containers/policy.json
+      - source: usr/etc/pki/containers/wolf-os.pub
+        destination: /usr/etc/pki/containers/wolf-os.pub
+      # THE KEY TO THE SIGNATURE
+      - source: usr/etc/containers/registries.d/wolf-os.yaml
+        destination: /usr/etc/containers/registries.d/wolf-os.yaml
+      # Nest inside the 'files' module
+      - source: usr/libexec/wolf-os-firstboot.sh
+        destination: /usr/libexec/wolf-os-firstboot.sh
+      - source: usr/lib/systemd/system/wolf-os-cleanup.service
+        destination: /usr/lib/systemd/system/wolf-os-cleanup.service
+      - source: usr/lib/tmpfiles.d/apps.conf
+        destination: /usr/lib/tmpfiles.d/apps.conf
+      - source: usr/lib/systemd/system/apps-tmpfiles.service
+        destination: /usr/lib/systemd/system/apps-tmpfiles.service 
+      - source: usr/lib/sysusers.d/wolf-os.conf  
+        destination: /usr/lib/sysusers.d/wolf-os.conf
+
+  # 4. Run the assembly script
+  - type: script
+    scripts:
+      - setup-wolf-os.sh
+      
+
+# Triggering first signed generation

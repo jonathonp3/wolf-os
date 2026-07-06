@@ -1,0 +1,17 @@
+[Unit]
+Description=Wolf-OS First Boot Cleanup
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/wolf-os-firstboot.sh
+RemainAfterExit=yes
+# Add Bazzite's "never give up" logic:
+Restart=on-failure
+RestartSec=60
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+
