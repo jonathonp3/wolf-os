@@ -20,7 +20,8 @@ systemctl enable \
     sshd.service \
     docker.service \
     wolf-os-cleanup.service \
-    apps-tmpfiles.service
+    apps-tmpfiles.service \
+    piavpn-provision.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
