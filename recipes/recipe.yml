@@ -42,7 +42,7 @@ modules:
         destination: /usr/libexec/piavpn-installer.sh
       # VPN service
       - source: usr/lib/systemd/system/piavpn-provision.service
-        destination: usr/lib/systemd/system/piavpn-provision.service       
+        destination: /usr/lib/systemd/system/piavpn-provision.service       
 
   # 4. Run the assembly script
   - type: script
