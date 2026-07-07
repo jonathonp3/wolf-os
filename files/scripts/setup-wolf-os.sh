@@ -10,7 +10,11 @@ groupadd -r virtnetwork || true
 echo "⚙️ Setting up First-Boot cleanup service..."
 chmod +x /usr/libexec/wolf-os-firstboot.sh
 
-# --- 3. FINALISE ---
+# --- 3. VPN ---
+echo "⚙️ Enabling PIA VPN Auto-Provisioner..."
+chmod +x /usr/libexec/piavpn-installer.sh
+
+# --- 4. FINALISE ---
 systemctl enable \
     libvirtd.service \
     virtlogd.service \
