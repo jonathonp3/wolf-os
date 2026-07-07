@@ -32,10 +32,11 @@ modules:
         destination: /usr/lib/systemd/system/apps-tmpfiles.service 
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
+      # VPN preparation
       - source: usr/share/applications/piavpn.desktop
         destination: /usr/share/applications/piavpn.desktop
-      - source: usr/pixmaps/piavpn.png
-        destination: /usr/pixmaps/piavpn.png      
+      - source: usr/share/pixmaps/piavpn.png
+        destination: /usr/share/pixmaps/piavpn.png      
         
 
   # 4. Run the assembly script
