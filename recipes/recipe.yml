@@ -38,11 +38,16 @@ modules:
       - source: usr/share/pixmaps/piavpn.png
         destination: /usr/share/pixmaps/piavpn.png    
       # VPN installer
-      - source: usr/libexec/piavpn-installer.sh
-        destination: /usr/libexec/piavpn-installer.sh
+      - source: usr/libexec/piavpn-deploy.sh
+        destination: /usr/libexec/piavpn-deploy.sh
+      - source: usr/libexec/piavpn-extract.sh
+        destination: /usr/libexec/piavpn-extract.sh       
       # VPN service
-      - source: usr/lib/systemd/system/piavpn-provision.service
-        destination: /usr/lib/systemd/system/piavpn-provision.service       
+      - source: usr/lib/systemd/system/piavpn-deploy.service
+        destination: /usr/lib/systemd/system/piavpn-deploy.service            
+      - source: usr/lib/systemd/system/piavpn-extract.service
+        destination: /usr/lib/systemd/system/piavpn-extract.service            
+
 
   # 4. Run the assembly script
   - type: script

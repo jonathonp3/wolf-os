@@ -11,8 +11,9 @@ echo "⚙️ Setting up First-Boot cleanup service..."
 chmod +x /usr/libexec/wolf-os-firstboot.sh
 
 # --- 3. VPN ---
-echo "⚙️ Enabling PIA VPN Auto-Provisioner..."
-chmod +x /usr/libexec/piavpn-installer.sh
+echo "⚙️ Enabling PIA VPN post install..."
+chmod +x /usr/libexec/piavpn-deploy.sh
+chmod +x /usr/lib/systemd/system/piavpn-extract.service
 
 # --- 4. FINALISE ---
 systemctl enable \
@@ -25,7 +26,7 @@ systemctl enable \
     docker.service \
     wolf-os-cleanup.service \
     apps-tmpfiles.service \
-    piavpn-provision.service
+    piavpn-deploy.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
