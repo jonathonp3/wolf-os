@@ -33,10 +33,10 @@ modules:
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
       # VPN preparation
-      - source: usr/share/applications/piavpn.desktop
-        destination: /usr/share/applications/piavpn.desktop
-      - source: usr/share/pixmaps/piavpn.png
-        destination: /usr/share/pixmaps/piavpn.png    
+      # source: usr/share/applications/piavpn.desktop
+      # destination: /usr/share/applications/piavpn.desktop
+      # source: usr/share/pixmaps/piavpn.png
+      # destination: /usr/share/pixmaps/piavpn.png    
       # VPN installer
       - source: usr/libexec/piavpn-deploy.sh
         destination: /usr/libexec/piavpn-deploy.sh
@@ -46,7 +46,7 @@ modules:
       - source: usr/lib/systemd/system/piavpn-deploy.service
         destination: /usr/lib/systemd/system/piavpn-deploy.service            
       - source: usr/lib/systemd/system/piavpn-extract.service
-        destination: /usr/lib/systemd/system/piavpn-extract.service            
+        destination: /usr/lib/systemd/system/piavpn-extract.service      
 
 
   # 4. Run the assembly script
