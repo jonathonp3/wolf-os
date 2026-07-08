@@ -32,11 +32,6 @@ modules:
         destination: /usr/lib/systemd/system/apps-tmpfiles.service 
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
-      # VPN preparation
-      # source: usr/share/applications/piavpn.desktop
-      # destination: /usr/share/applications/piavpn.desktop
-      # source: usr/share/pixmaps/piavpn.png
-      # destination: /usr/share/pixmaps/piavpn.png    
       # VPN installer
       - source: usr/libexec/piavpn-deploy.sh
         destination: /usr/libexec/piavpn-deploy.sh
