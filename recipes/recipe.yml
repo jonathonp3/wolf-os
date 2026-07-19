@@ -18,10 +18,11 @@ modules:
         destination: /usr/etc/containers/policy.json
       - source: usr/etc/pki/containers/wolf-os.pub
         destination: /usr/etc/pki/containers/wolf-os.pub
+
       # THE KEY TO THE SIGNATURE
       - source: usr/etc/containers/registries.d/wolf-os.yaml
         destination: /usr/etc/containers/registries.d/wolf-os.yaml
-      # Nest inside the 'files' module
+
       - source: usr/libexec/wolf-os-firstboot.sh
         destination: /usr/libexec/wolf-os-firstboot.sh
       - source: usr/lib/systemd/system/wolf-os-cleanup.service
@@ -32,17 +33,6 @@ modules:
         destination: /usr/lib/systemd/system/apps-tmpfiles.service 
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
-      # VPN installer
-      - source: usr/libexec/piavpn-deploy.sh
-        destination: /usr/libexec/piavpn-deploy.sh
-      - source: usr/libexec/piavpn-extract.sh
-        destination: /usr/libexec/piavpn-extract.sh       
-      # VPN service
-      - source: usr/lib/systemd/system/piavpn-deploy.service
-        destination: /usr/lib/systemd/system/piavpn-deploy.service            
-      - source: usr/lib/systemd/system/piavpn-extract.service
-        destination: /usr/lib/systemd/system/piavpn-extract.service      
-
 
   # 4. Run the assembly script
   - type: script

@@ -14,15 +14,21 @@ install:
   - fuse-libs
   
   # rpmfusion
-  # mesa-va-drivers-freeworld
+  - mesa-va-drivers-freeworld
+  
+  # PIA VPN
+  - wolf-os-pia-installer
+
+  # Virtualisation stack
+  - wolf-os-virtualization
   
   # Virtualisation stack
-  - libvirt-daemon-config-network
-  - libvirt-daemon-kvm
-  - qemu-kvm
-  - virt-install
-  - virt-manager
-  - virt-viewer
+  # libvirt-daemon-config-network
+  # libvirt-daemon-kvm
+  # qemu-kvm
+  # virt-install
+  # virt-manager
+  # virt-viewer
   
   # Docker
   - docker-ce
