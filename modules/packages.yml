@@ -9,7 +9,6 @@ remove:
   - libavfilter-free
   - libavformat-free
   - libavutil-free
-  - libpostproc-free
   - libswresample-free
   - libswscale-free
 
