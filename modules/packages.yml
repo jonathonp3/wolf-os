@@ -13,8 +13,12 @@ install:
   - fuse
   - fuse-libs
   
-  # rpmfusion
+  # Codecs rpmfusion 
+  - ffmpeg
+  - gstreamer1-libav
+  - HandBrake-gui
   - mesa-va-drivers-freeworld
+  - mpv
   
   # PIA VPN
   - wolf-os-pia-installer
