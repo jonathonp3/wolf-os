@@ -1,5 +1,18 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
 type: rpm-ostree
+
+# Remove conflicting base packages
+remove:
+  - ffmpeg-free
+  - libavcodec-free
+  - libavdevice-free
+  - libavfilter-free
+  - libavformat-free
+  - libavutil-free
+  - libpostproc-free
+  - libswresample-free
+  - libswscale-free
+
 install:
   - distrobox
   - gparted
@@ -40,16 +53,3 @@ install:
   - containerd.io
   - docker-buildx-plugin
   - docker-compose-plugin
-  
-  # PIA
-  - libnsl
-  - libxcrypt-compat
-  - nss-tools
-  - xterm
-  - libXaw
-  - libutempter
-  - mkfontscale
-  - xorg-x11-fonts-misc
-  - libxkbcommon-x11
-  - wget2
-
