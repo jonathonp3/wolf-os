@@ -39,7 +39,16 @@ else
     flatpak install --system -y "$REMOTE_NAME" "$APP_ID"
 fi
 
-# 5. Apply Global Theming Override (ensures GTK themes match the OS)
+# 5. Wolf-OS App Hardening: Element/Riot Keyring Fix
+# Apply these BEFORE the app is run to ensure first-time success.
+echo "🔐 Hardening Element/Riot Keyring Integration..."
+flatpak override --system \
+  --filesystem=/run/dbus/system_bus_socket \
+  --talk-name=org.freedesktop.secrets \
+  --env=PASSWORD_STORE=gnome-libsecret \
+  im.riot.Riot || :
+
+# 6. Apply Global Theming Override (ensures GTK themes match the OS)
 echo "🎨 Applying theming overrides..."
 flatpak override --system --filesystem=xdg-config/gtk-4.0:ro || :
 flatpak override --system --filesystem=xdg-config/gtk-3.0:ro || :
