@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wallpapers.dtd">
+<wallpapers>
+  <!-- DYNAMIC DARK MODE ENTRY -->
+  <wallpaper deleted="false">
+    <name>Wolf-OS Dynamic Geometrics</name>
+    <filename>/usr/share/backgrounds/wolf-os/geometrics-l.jxl</filename>
+    <filename-dark>/usr/share/backgrounds/wolf-os/geometrics-d.jxl</filename-dark>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+  </wallpaper>
+
+  <!-- STANDARD WALLPAPERS -->
+  <wallpaper deleted="false">
+    <name>Wolf-OS Nebula</name>
+    <filename>/usr/share/backgrounds/wolf-os/nebula-by-hubble-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Blue Sea Boat</name>
+    <filename>/usr/share/backgrounds/wolf-os/boat-blue-sea-pink-clouds-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Abstract Colorful</name>
+    <filename>/usr/share/backgrounds/wolf-os/colorful-abstract-design-digital-art-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Landscape Illustration</name>
+    <filename>/usr/share/backgrounds/wolf-os/colorful-landscape-illustration-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Cyan Background</name>
+    <filename>/usr/share/backgrounds/wolf-os/cyan_color_background-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Green Abstract</name>
+    <filename>/usr/share/backgrounds/wolf-os/green-3-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Low Poly River</name>
+    <filename>/usr/share/backgrounds/wolf-os/low-poly-river-landscape-design-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Meteor Shower</name>
+    <filename>/usr/share/backgrounds/wolf-os/meteor-shower-flat-design-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Mountain Illustration</name>
+    <filename>/usr/share/backgrounds/wolf-os/mountain-landscape-illustration-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Pink Yellow Waves</name>
+    <filename>/usr/share/backgrounds/wolf-os/pink-yellow-abstract-art-waves-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Planets</name>
+    <filename>/usr/share/backgrounds/wolf-os/planets-universe-16-wallpaper-1280x800.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Purple Minimalist</name>
+    <filename>/usr/share/backgrounds/wolf-os/purple-minimalist-background-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Simple Blue Black</name>
+    <filename>/usr/share/backgrounds/wolf-os/simple-blue--black-wallpaper-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Smooth Dark Blue</name>
+    <filename>/usr/share/backgrounds/wolf-os/smooth-dark-blue-gradient-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Space Stars</name>
+    <filename>/usr/share/backgrounds/wolf-os/space-colors-blue-purple-stars-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Sphere Waves</name>
+    <filename>/usr/share/backgrounds/wolf-os/sphere-in-gradient-waves-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Underwater</name>
+    <filename>/usr/share/backgrounds/wolf-os/underwater-12-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Blue Sky</name>
+    <filename>/usr/share/backgrounds/wolf-os/blue-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Wolf-OS Landscape Legacy</name>
+    <filename>/usr/share/backgrounds/wolf-os/Colorful_landscape_illustration-wallpaper-2560x1440.jpg</filename>
+    <options>zoom</options>
+  </wallpaper>
+</wallpapers>
+
