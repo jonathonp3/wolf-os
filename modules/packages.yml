@@ -3,12 +3,6 @@ type: rpm-ostree
 
 # Remove conflicting base packages
 remove:
-  # base
-  - fedora-bookmarks.noarch
-  - firefox
-  - firefox-langpacks
-  - toolbox
-  # ffmpeg
   - ffmpeg-free
   - libavcodec-free
   - libavdevice-free
@@ -17,6 +11,10 @@ remove:
   - libavutil-free
   - libswresample-free
   - libswscale-free
+  - fedora-bookmarks.noarch
+  - firefox
+  - firefox-langpacks
+  - toolbox
 
 install:
   - distrobox
