@@ -14,7 +14,7 @@ remove:
   - fedora-bookmarks.noarch
   - firefox
   - firefox-langpacks
-  - toolbox
+  # toolbox
 
 install:
   - distrobox
