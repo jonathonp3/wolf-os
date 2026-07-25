@@ -3,5 +3,5 @@ type: rpm-ostree
 remove:
   - firefox
   - firefox-langpacks
-  - fedora-bookmarks.noarch
+  # fedora-bookmarks.noarch
 
