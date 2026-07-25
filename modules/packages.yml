@@ -1,21 +1,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
 type: rpm-ostree
 
-# Remove conflicting base packages
-remove:
-  - ffmpeg-free
-  - libavcodec-free
-  - libavdevice-free
-  - libavfilter-free
-  - libavformat-free
-  - libavutil-free
-  - libswresample-free
-  - libswscale-free
-  - fedora-bookmarks.noarch
-  - firefox
-  - firefox-langpacks
-  # toolbox
-
 install:
   - distrobox
   - gparted

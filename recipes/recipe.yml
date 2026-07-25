@@ -7,11 +7,20 @@ image-version: 44
 modules:
   # 1. Register the repositories
   - from-file: ../modules/repositories.yml
+  
+  # 2.  Remove Firefox
+  - from-file: ../modules/remove-firefox.yml
+  
+  # 3. Remove Toolbox
+  - from-file: ../modules/remove-toolbox.yml
 
-  # 2. Install the software
+  # 4. Remove ffmpeg free codecs
+  - from-file: ../modules/remove-codecs.yml
+
+  # 5. Install the software
   - from-file: ../modules/packages.yml
   
-  # 3. 
+  # 6. 
   - type: files
     files:
       - source: usr/etc/containers/policy.json
@@ -34,7 +43,7 @@ modules:
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
 
-  # 4. Run the assembly script
+  # 7. Run the assembly script
   - type: script
     scripts:
       - setup-wolf-os.sh
