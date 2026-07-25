@@ -6,6 +6,7 @@ remove:
   # base
   - fedora-bookmarks.noarch
   - firefox
+  - firefox-langpacks
   - toolbox
   # ffmpeg
   - ffmpeg-free
