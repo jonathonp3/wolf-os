@@ -21,6 +21,9 @@ install:
   - mesa-va-drivers-freeworld
   - mpv
   
+  # Image
+  - libwebp-tools
+  
   # PIA VPN
   - wolf-os-pia-installer
 
