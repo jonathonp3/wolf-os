@@ -23,6 +23,7 @@ install:
   
   # Image
   - libwebp-tools
+  - libjxl-utils
   
   # PIA VPN
   - wolf-os-pia-installer
