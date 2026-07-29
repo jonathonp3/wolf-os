@@ -1,6 +1,10 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
 type: rpm-ostree
 
-swap:
-  - mesa-va-drivers mesa-va-drivers-freeworld
-  - mesa-vulkan-drivers mesa-vulkan-drivers-freeworld
+remove:
+  - mesa-va-drivers
+  - mesa-vulkan-drivers
+
+install:
+  - mesa-va-drivers-freeworld
+  - mesa-vulkan-drivers-freeworld
