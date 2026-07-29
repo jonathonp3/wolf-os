@@ -9,18 +9,21 @@ modules:
   - from-file: ../modules/repositories.yml
   
   # 2.  Remove Firefox
-  # from-file: ../modules/remove-firefox.yml
+  - from-file: ../modules/remove-firefox.yml
   
   # 3. Remove Toolbox
   - from-file: ../modules/remove-toolbox.yml
 
   # 4. Remove ffmpeg free codecs
   - from-file: ../modules/remove-codecs.yml
+  
+  # 5.
+  - from-file: ../modules/mesa-freeworld.yml
 
-  # 5. Install the software
+  # 6. Install the software
   - from-file: ../modules/packages.yml
   
-  # 6. 
+  # 7. 
   - type: files
     files:
       - source: usr/etc/containers/policy.json
@@ -43,10 +46,10 @@ modules:
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
 
-  # 7. Install backgrounds
+  # 8. Install backgrounds
   - from-file: ../modules/backgrounds.yml        
 
-  # 8. Run the assembly script
+  # 9. Run the assembly script
   - type: script
     scripts:
       - setup-wolf-os.sh

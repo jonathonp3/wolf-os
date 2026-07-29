@@ -16,10 +16,14 @@ install:
   
   # Codecs rpmfusion 
   - ffmpeg
+  - gstreamer1-plugins-ugly
   - gstreamer1-libav
   - HandBrake-gui
-  - mesa-va-drivers-freeworld
   - mpv
+  
+  # Mesa
+  # mesa-va-drivers-freeworld
+  # mesa-vulkan-drivers-freeworld
   
   # Image
   - libwebp-tools
@@ -30,14 +34,6 @@ install:
 
   # Virtualisation stack
   - wolf-os-virtualization
-  
-  # Virtualisation stack
-  # libvirt-daemon-config-network
-  # libvirt-daemon-kvm
-  # qemu-kvm
-  # virt-install
-  # virt-manager
-  # virt-viewer
   
   # Docker
   - docker-ce
