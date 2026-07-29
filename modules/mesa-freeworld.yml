@@ -5,6 +5,3 @@ install:
   - mesa-va-drivers-freeworld
   - mesa-vulkan-drivers-freeworld
 
-remove:
-  - mesa-va-drivers
-  - mesa-vulkan-drivers
