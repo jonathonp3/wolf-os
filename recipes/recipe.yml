@@ -9,7 +9,9 @@ modules:
   - from-file: ../modules/repositories.yml
   
   # 2.  Remove Firefox
-  - from-file: ../modules/remove-firefox.yml
+  # from-file: ../modules/remove-firefox.yml
+  
+  - from-file: ../modules/remove-bookmarks.yml
   
   # 3. Remove Toolbox
   - from-file: ../modules/remove-toolbox.yml
