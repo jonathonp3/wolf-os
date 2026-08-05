@@ -15,10 +15,6 @@ chmod +x /usr/lib/systemd/system/piavpn-extract.service
 
 # --- 4. FINALISE ---
 systemctl enable \
-    virtlogd.service \
-    virtnetworkd.service \
-    virtstoraged.service \
-    virtnodedevd.socket \
     sshd.service \
     docker.service \
     wolf-os-cleanup.service \
