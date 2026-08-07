@@ -53,7 +53,7 @@ echo "🎨 Applying theming overrides..."
 flatpak override --system --filesystem=xdg-config/gtk-4.0:ro || :
 flatpak override --system --filesystem=xdg-config/gtk-3.0:ro || :
 
-# 6. Final Cleanup: Remove unused runtimes to save space
+# 6. Final Optimization: Remove unused runtimes to save space
 flatpak uninstall --system --unused -y || :
 
 echo "✨ Wolf-OS first-boot tasks complete."

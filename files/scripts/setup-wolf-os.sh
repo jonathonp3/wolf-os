@@ -8,16 +8,11 @@ groupadd -r docker || true
 echo "⚙️ Setting up First-Boot cleanup service..."
 chmod +x /usr/libexec/wolf-os-firstboot.sh
 
-# --- 3. VPN ---
-echo "⚙️ Enabling PIA VPN post install..."
-chmod +x /usr/libexec/piavpn-deploy.sh
-chmod +x /usr/lib/systemd/system/piavpn-extract.service
-
-# --- 4. FINALISE ---
+# --- 3. FINALISE ---
 systemctl enable \
     sshd.service \
     docker.service \
-    wolf-os-cleanup.service \
+    wolf-os-optimization.service \
     apps-tmpfiles.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."

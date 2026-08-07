@@ -19,7 +19,7 @@ modules:
   # 4. Remove ffmpeg free codecs
   - from-file: ../modules/remove-codecs.yml
   
-  # 5.
+  # 5. # Enable hardware acceleration for H.264/H.265/VC1 codecs (replaces mesa-va-drivers)
   - from-file: ../modules/mesa-freeworld.yml
 
   # 6. Install the software
@@ -39,8 +39,8 @@ modules:
 
       - source: usr/libexec/wolf-os-firstboot.sh
         destination: /usr/libexec/wolf-os-firstboot.sh
-      - source: usr/lib/systemd/system/wolf-os-cleanup.service
-        destination: /usr/lib/systemd/system/wolf-os-cleanup.service
+      - source: usr/lib/systemd/system/wolf-os-optimization.service
+        destination: /usr/lib/systemd/system/wolf-os-optimization.service
       - source: usr/lib/tmpfiles.d/apps.conf
         destination: /usr/lib/tmpfiles.d/apps.conf
       - source: usr/lib/systemd/system/apps-tmpfiles.service
