@@ -30,7 +30,7 @@ install:
   - libjxl-utils
   
   # PIA VPN
-  - wolf-os-pia-installer
+  # wolf-os-pia-installer
 
   # Virtualisation stack
   - wolf-os-virtualization
