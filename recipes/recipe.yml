@@ -37,7 +37,7 @@ modules:
       - source: usr/etc/containers/registries.d/wolf-os.yaml
         destination: /usr/etc/containers/registries.d/wolf-os.yaml
 
-      - source: usr/libexec/wolf-os-firstboot.sh
+      - source: usr/libexec/wolf-os-optimization.sh
         destination: /usr/libexec/wolf-os-optimization.sh
       - source: usr/lib/systemd/system/wolf-os-optimization.service
         destination: /usr/lib/systemd/system/wolf-os-optimization.service
