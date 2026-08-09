@@ -30,7 +30,15 @@ install:
   - libjxl-utils
   
   # PIA VPN
-  # wolf-os-pia-installer
+  - libnsl
+  - libutempter
+  - libxcrypt-compat
+  - libXaw
+  - libxkbcommon-x11
+  - mkfontscale  
+  - nss-tools
+  - xorg-x11-fonts-misc
+  - xterm
 
   # Virtualisation stack
   - wolf-os-virtualization
