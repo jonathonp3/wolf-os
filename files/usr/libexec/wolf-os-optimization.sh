@@ -56,5 +56,5 @@ flatpak override --system --filesystem=xdg-config/gtk-3.0:ro || :
 # 6. Final Optimization: Remove unused runtimes to save space
 flatpak uninstall --system --unused -y || :
 
-echo "✨ Wolf-OS first-boot tasks complete."
+echo "✨ Wolf-OS Optimization tasks complete."
 

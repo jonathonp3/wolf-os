@@ -22,8 +22,8 @@ install:
   - mpv
   
   # Mesa
-  # mesa-va-drivers-freeworld
-  # mesa-vulkan-drivers-freeworld
+  - mesa-va-drivers-freeworld
+  - mesa-vulkan-drivers-freeworld
   
   # Image
   - libwebp-tools

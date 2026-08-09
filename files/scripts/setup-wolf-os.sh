@@ -6,7 +6,7 @@ groupadd -r docker || true
 
 # --- 2. AUTOMATED CLEANUP ---
 echo "⚙️ Setting up First-Boot cleanup service..."
-chmod +x /usr/libexec/wolf-os-firstboot.sh
+chmod +x /usr/libexec/wolf-os-optimization.sh
 
 # --- 3. FINALISE ---
 systemctl enable \

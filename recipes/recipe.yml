@@ -38,7 +38,7 @@ modules:
         destination: /usr/etc/containers/registries.d/wolf-os.yaml
 
       - source: usr/libexec/wolf-os-firstboot.sh
-        destination: /usr/libexec/wolf-os-firstboot.sh
+        destination: /usr/libexec/wolf-os-optimization.sh
       - source: usr/lib/systemd/system/wolf-os-optimization.service
         destination: /usr/lib/systemd/system/wolf-os-optimization.service
       - source: usr/lib/tmpfiles.d/apps.conf
@@ -56,5 +56,3 @@ modules:
     scripts:
       - setup-wolf-os.sh
       
-
-# Triggering first signed generation
