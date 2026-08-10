@@ -41,7 +41,7 @@ install:
   - xterm
 
   # Virtualisation stack
-  - wolf-os-virtualization
+  # wolf-os-virtualization
   
   # Docker
   - docker-ce
