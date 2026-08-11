@@ -28,23 +28,27 @@ modules:
   # 7. 
   - type: files
     files:
+      # Policy
       - source: usr/etc/containers/policy.json
         destination: /usr/etc/containers/policy.json
       - source: usr/etc/pki/containers/wolf-os.pub
         destination: /usr/etc/pki/containers/wolf-os.pub
 
-      # THE KEY TO THE SIGNATURE
+      # Key to signature
       - source: usr/etc/containers/registries.d/wolf-os.yaml
         destination: /usr/etc/containers/registries.d/wolf-os.yaml
-
+      
+      # Optimization
       - source: usr/libexec/wolf-os-optimization.sh
         destination: /usr/libexec/wolf-os-optimization.sh
       - source: usr/lib/systemd/system/wolf-os-optimization.service
         destination: /usr/lib/systemd/system/wolf-os-optimization.service
+      
       - source: usr/lib/tmpfiles.d/apps.conf
         destination: /usr/lib/tmpfiles.d/apps.conf
       - source: usr/lib/systemd/system/apps-tmpfiles.service
         destination: /usr/lib/systemd/system/apps-tmpfiles.service 
+      
       - source: usr/lib/sysusers.d/wolf-os.conf  
         destination: /usr/lib/sysusers.d/wolf-os.conf
 
