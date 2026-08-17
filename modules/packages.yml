@@ -30,18 +30,10 @@ install:
   - libjxl-utils
   
   # PIA VPN
-  - libnsl
-  - libutempter
-  - libxcrypt-compat
-  - libXaw
-  - libxkbcommon-x11
-  - mkfontscale  
-  - nss-tools
-  - xorg-x11-fonts-misc
-  - xterm
+  - sirius-os-pia-installer
 
   # Virtualisation stack
-  # wolf-os-virtualization
+  - sirius-os-virtualization
   
   # Docker
   - docker-ce
