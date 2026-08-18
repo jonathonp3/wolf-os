@@ -30,10 +30,10 @@ install:
   - libjxl-utils
   
   # PIA VPN
-  - sirius-os-pia-installer
+  # sirius-os-pia-installer
 
   # Virtualisation stack
-  - sirius-os-virtualization
+  # sirius-os-virtualization
   
   # Docker
   - docker-ce
