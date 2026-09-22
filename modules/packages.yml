@@ -2,10 +2,15 @@
 type: rpm-ostree
 
 install:
+  # Containers 
   - distrobox
+  
+  # Tools
   - gparted
   - pluma
   - vim-enhanced
+  
+  # 
   - vlc
   - yt-dlp
   
