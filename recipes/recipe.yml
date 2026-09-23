@@ -28,30 +28,38 @@ modules:
   # 7. 
   - type: files
     files:
-      # Policy
+      # --- Signing and verification ---
+      # Policy that requires sigstore signing for ghcr.io/jonathonp3/wolf-os
       - source: usr/etc/containers/policy.json
         destination: /usr/etc/containers/policy.json
+      # The public key used to verify image signatures
       - source: usr/etc/pki/containers/wolf-os.pub
         destination: /usr/etc/pki/containers/wolf-os.pub
-
-      # Key to signature
+      # Tells containers tooling to use sigstore attachments for ghcr.io/jonathonp3
       - source: usr/etc/containers/registries.d/wolf-os.yaml
         destination: /usr/etc/containers/registries.d/wolf-os.yaml
-      
-      # Optimization
+
+      # --- First-boot optimization ---
+      # Script that runs the first-boot tasks
       - source: usr/libexec/wolf-os-optimization.sh
         destination: /usr/libexec/wolf-os-optimization.sh
+      # Runs the optimization script once, then writes a marker to skip future boots
       - source: usr/lib/systemd/system/wolf-os-optimization.service
         destination: /usr/lib/systemd/system/wolf-os-optimization.service
-      
+
+      # --- tmpfiles setup ---
+      # Directory creation rules for apps
       - source: usr/lib/tmpfiles.d/apps.conf
         destination: /usr/lib/tmpfiles.d/apps.conf
+      # Applies the tmpfiles rules at boot
       - source: usr/lib/systemd/system/apps-tmpfiles.service
-        destination: /usr/lib/systemd/system/apps-tmpfiles.service 
-      
-      - source: usr/lib/sysusers.d/wolf-os.conf  
-        destination: /usr/lib/sysusers.d/wolf-os.conf
+        destination: /usr/lib/systemd/system/apps-tmpfiles.service
 
+      # --- User and group setup ---
+      # Creates groups and assigns users
+      - source: usr/lib/sysusers.d/wolf-os.conf
+        destination: /usr/lib/sysusers.d/wolf-os.conf
+        
   # 8. Install backgrounds
   - from-file: ../modules/backgrounds.yml        
 
