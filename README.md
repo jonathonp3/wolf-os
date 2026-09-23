@@ -17,27 +17,16 @@ The virtualization stack and the PIA installer are provided by the
 [Sirius Provisioning Framework](https://github.com/jonathonp3/sirius-provisioning-framework)
 (SPF). Wolf-OS uses SPF packages.
 
----
-
-## Components
-
-- Fedora Silverblue (base)
-- libvirt and virt-manager, with a working NAT bridge
-  (via [`sirius-os-virtualization`](https://github.com/jonathonp3/sirius-os-virtualization))
-- Private Internet Access VPN client
-  (via [`sirius-os-pia-installer`](https://github.com/jonathonp3/sirius-os-pia-installer))
-- Docker
-
 The PIA installer package contains only provisioning and automation
 scripts. It does not include any Private Internet Access source code or
 binaries. The PIA Linux application is fetched from the official PIA
 website during the first-boot extraction phase and is prepared to run
 natively on the Atomic system.
 
-
 ---
 
 ## License
+
 See `LICENSE`
 
 ---
