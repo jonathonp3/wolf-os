@@ -12,8 +12,7 @@ chmod +x /usr/libexec/wolf-os-optimization.sh
 systemctl enable \
     sshd.service \
     docker.service \
-    wolf-os-optimization.service \
-    apps-tmpfiles.service
+    wolf-os-optimization.service
 
 echo "✅ Wolf-OS Custom Assembly Complete! Ready for Deployment."
 
