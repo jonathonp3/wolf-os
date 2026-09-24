@@ -29,15 +29,21 @@ modules:
   - type: files
     files:
       # --- Signing and verification ---
-      # Policy that requires sigstore signing for ghcr.io/jonathonp3/wolf-os
+      # Signature policy: rejects unverified images, requires sigstore
+      # signature from the wolf-os key for ghcr.io/jonathonp3/wolf-os
       - source: usr/etc/containers/policy.json
         destination: /usr/etc/containers/policy.json
-      # The public key used to verify image signatures
+      # Cosign public key used to verify wolf-os image signatures
       - source: usr/etc/pki/containers/wolf-os.pub
         destination: /usr/etc/pki/containers/wolf-os.pub
-      # Tells containers tooling to use sigstore attachments for ghcr.io/jonathonp3
+      # Enables sigstore attachment lookup for ghcr.io/jonathonp3 so
+      # containers tooling knows where to find the .sig tags in the registry
       - source: usr/etc/containers/registries.d/wolf-os.yaml
         destination: /usr/etc/containers/registries.d/wolf-os.yaml
+      # At boot: replace /etc/containers/policy.json and /etc/pki/containers/wolf-os.pub
+      # with the image versions above, so stale host copies can't shadow them
+      - source: usr/lib/tmpfiles.d/cosign-policy.conf
+        destination: /usr/lib/tmpfiles.d/cosign-policy.conf
 
       # --- First-boot optimization ---
       # Script that runs the first-boot tasks
@@ -46,14 +52,6 @@ modules:
       # Runs the optimization script once, then writes a marker to skip future boots
       - source: usr/lib/systemd/system/wolf-os-optimization.service
         destination: /usr/lib/systemd/system/wolf-os-optimization.service
-
-      # --- tmpfiles setup ---
-      # Directory creation rules for apps
-      - source: usr/lib/tmpfiles.d/apps.conf
-        destination: /usr/lib/tmpfiles.d/apps.conf
-      # Applies the tmpfiles rules at boot
-      - source: usr/lib/systemd/system/apps-tmpfiles.service
-        destination: /usr/lib/systemd/system/apps-tmpfiles.service
 
       # --- User and group setup ---
       # Creates groups and assigns users
