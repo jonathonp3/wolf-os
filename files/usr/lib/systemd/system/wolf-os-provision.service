@@ -1,0 +1,14 @@
+[Unit]
+Description=Wolf OS: provision on first boot
+After=local-fs.target
+# Only run once per install
+ConditionPathExists=!/etc/wolf-os/wolf-os-provisioned
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/bin/bash /usr/libexec/wolf-os-provision.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

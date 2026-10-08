@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
+#
+# Homebrew (Linuxbrew) — system-wide install.
+#
+# Silverblue does not ship Homebrew by default; Universal Blue
+# downstreams (Bazzite, Bluefin, Aurora) do, but a stock
+# Silverblue-based build needs this module added explicitly.
+#
+# What this does:
+#   - Installs Homebrew at /home/linuxbrew/.linuxbrew/
+#   - Adds /etc/profile.d/brew.sh for shell integration
+#   - Makes `brew` available to all users on next login
+#
+# We deliberately do NOT pre-install any brews. Users run
+# `brew install <pkg>` themselves. Pre-installing bloats the image,
+# locks versions at build time, and defeats the point of Homebrew
+# (user-driven installs).
+#
+# If `brew install` later fails to build a formula from source, add
+# the build toolchain (gcc, gcc-c++, make, bison, patch, ruby) to
+# packages.yml. Most Linux formulas ship pre-built and don't need it.
+type: brew
