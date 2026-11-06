@@ -2,7 +2,7 @@
 name: wolf-os
 description: A declarative, high-performance Nix-style Fedora Atomic workstation.
 base-image: quay.io/fedora/fedora-silverblue
-image-version: 44
+image-version: latest
 
 modules:
   # 1. Register the repositories
