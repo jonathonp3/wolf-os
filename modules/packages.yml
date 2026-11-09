@@ -1,55 +1,56 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
-type: rpm-ostree
+type: dnf
 
 install:
-  # Containers 
-  - distrobox
-  
-  # Tools
-  - gh
-  - gparted
-  - pluma
-  - vim-enhanced
-  
-  # 
-  - vlc
-  - yt-dlp
-  
-  # Share
-  - sshfs
+  packages:
+    # Containers 
+    - distrobox
+    
+    # Tools
+    - gh
+    - gparted
+    - pluma
+    - vim-enhanced
+    
+    # 
+    - vlc
+    - yt-dlp
+    
+    # Share
+    - sshfs
 
-  # LLM container
-  - clinfo
-  - fuse
-  - fuse-libs
-  
-  # Codecs rpmfusion 
-  - ffmpeg
-  - gstreamer1-plugins-ugly
-  - gstreamer1-libav
-  - HandBrake-gui
-  - mpv
-  
-  # Mesa
-  - mesa-va-drivers-freeworld
-  - mesa-vulkan-drivers-freeworld
-  
-  # Image
-  - libwebp-tools
-  - libjxl-utils
-  
-  # PIA VPN
-  - sirius-os-pia-installer
-  
-  # LL<
-  - sirius-os-deepseek-harness
+    # LLM container
+    - clinfo
+    - fuse
+    - fuse-libs
+    
+    # Codecs rpmfusion 
+    - ffmpeg
+    - gstreamer1-plugins-ugly
+    - gstreamer1-libav
+    - HandBrake-gui
+    - mpv
+    
+    # Mesa
+    - mesa-va-drivers-freeworld
+    - mesa-vulkan-drivers-freeworld
+    
+    # Image
+    - libwebp-tools
+    - libjxl-utils
+    
+    # PIA VPN
+    - sirius-os-pia-installer
+    
+    # LL<
+    - sirius-os-deepseek-harness
 
-  # Virtualisation stack
-  - sirius-os-virtualization
-  
-  # Docker
-  - docker-ce
-  - docker-ce-cli
-  - containerd.io
-  - docker-buildx-plugin
-  - docker-compose-plugin
+    # Virtualisation stack
+    - sirius-os-virtualization
+    
+    # Docker
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin
