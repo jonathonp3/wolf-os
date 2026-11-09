@@ -40,6 +40,9 @@ install:
   
   # PIA VPN
   - sirius-os-pia-installer
+  
+  # LL<
+  - sirius-os-deepseek-harness
 
   # Virtualisation stack
   - sirius-os-virtualization
