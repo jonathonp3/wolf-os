@@ -7,6 +7,7 @@ install:
     - distrobox
     
     # Tools
+    - atuin
     - gh
     - gparted
     - pluma
